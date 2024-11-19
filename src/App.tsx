@@ -1,25 +1,26 @@
-import React, { useState } from 'react'
-import TodoItem from './TodoItem'
+import { useState } from 'react'
+import TodoItem from './components/TodoItem'
+import { Todo } from './types'
 import './App.css'
 
 function App() {
-  const [todos, setTodos] = useState([])
-  const [input, setInput] = useState('')
+  const [todos, setTodos] = useState<Todo[]>([])
+  const [input, setInput] = useState<string>('')
 
-  const addTodo = () => {
+  const addTodo = (): void => {
     if (input.trim() !== '') {
       setTodos([...todos, { id: Date.now(), text: input, completed: false }])
       setInput('')
     }
   }
 
-  const toggleTodo = (id) => {
+  const toggleTodo = (id: number): void => {
     setTodos(todos.map(todo =>
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
     ))
   }
 
-  const deleteTodo = (id) => {
+  const deleteTodo = (id: number): void => {
     setTodos(todos.filter(todo => todo.id !== id))
   }
 

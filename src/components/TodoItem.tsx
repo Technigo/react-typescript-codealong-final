@@ -1,6 +1,6 @@
-import React from 'react'
+import { TodoItemProps } from '../types'
 
-function TodoItem({ todo, onToggle, onDelete }) {
+function TodoItem({ todo, onToggle, onDelete }: TodoItemProps) {
   return (
     <li>
       <span
